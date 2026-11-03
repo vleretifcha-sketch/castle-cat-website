@@ -1,0 +1,13 @@
+---
+description: Conventions du site Castle Cat (Next.js + Tailwind v4)
+alwaysApply: true
+---
+
+- Le style passe par les tokens du bloc `@theme` de `app/globals.css`. Ne jamais écrire de couleur hexadécimale, de police ou de rayon en dur dans un composant : utiliser les classes issues des tokens (`bg-ink`, `text-muted`, `rounded-card`…). Pour une nouvelle couleur, ajouter un token.
+- Classes partagées dans `globals.css` : `container-page`, `btn`, `btn-primary`, `btn-secondary`, `btn-inverse`, `toggle`, `field`, `eyebrow`, `skip-link`. Les réutiliser plutôt que dupliquer.
+- Les prix de la pension viennent uniquement de `lib/pricing.ts`. Après toute modification : `npm run check:prix`.
+- Les coordonnées, horaires et réseaux viennent de `lib/site.ts`.
+- Accessibilité à préserver : contraste texte ≥ 4.5:1, bordures de champs et boutons ≥ 3:1, cibles tactiles ≥ 44 px, `aria-pressed` sur les boutons bascule, `aria-live` sur les prix, labels sur tous les champs, focus visible.
+- SEO : un seul `h1` par page, `metadata` (title + description) sur chaque page, ne pas renommer les URLs sans ajouter une redirection dans `next.config.ts`.
+- Textes en français, apostrophe typographique ’. Ton : « je » (Sylvain parle), concis, sans remplissage.
+- Les `<Placeholder>` sont à remplacer par `next/image` avec un `alt` descriptif.
