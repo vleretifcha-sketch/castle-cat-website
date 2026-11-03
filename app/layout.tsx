@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
+import { SplashLoader } from "@/components/SplashLoader";
 import { site } from "@/lib/site";
 
 const hero = localFont({
@@ -66,6 +67,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="fr" className={`${hero.variable} ${sans.variable}`}>
       <body>
+        <SplashLoader />
         <a href="#contenu" className="skip-link">Aller au contenu</a>
         <Header />
         <main id="contenu">{children}</main>

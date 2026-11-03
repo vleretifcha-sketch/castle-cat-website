@@ -120,6 +120,10 @@
     text-underline-offset: 0.2em;
   }
   @media (prefers-reduced-motion: reduce) {
+    .splash-progress {
+      animation: none !important;
+      width: 100% !important;
+    }
     .animate-marquee,
     .animate-marquee-vertical {
       animation: none !important;
@@ -137,6 +141,22 @@
       transition: none !important;
     }
   }
+}
+
+/* Splash — barre de progression 0 → 100 % */
+@keyframes splash-progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+.splash-progress {
+  width: 0%;
+  animation-name: splash-progress;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
 }
 
 /* Apparitions — courbe type “premium” (ease-out expo) */
