@@ -67,6 +67,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="fr" className={`${hero.variable} ${sans.variable}`}>
       <body>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(!sessionStorage.getItem("castle-cat-splash-seen")&&!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("splash-pending")}catch(e){}`,
+          }}
+        />
         <SplashLoader />
         <a href="#contenu" className="skip-link">Aller au contenu</a>
         <Header />

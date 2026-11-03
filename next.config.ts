@@ -2,6 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   eslint: { ignoreDuringBuilds: true },
+  // Masque le badge « N » Next.js en bas à gauche (souvent pris pour un logo).
+  devIndicators: false,
 
   // Redirections 301 depuis l'ancien site « Monsieur l'Humain ».
   // CRITIQUE pour le SEO : une ligne par ancienne URL, à compléter

@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Lottie } from "lottie-react";
+import { LottieLight as Lottie } from "lottie-react";
+import catPlaying from "@/assets/cat-playing.json";
 
 const DURATION_MS = 2500;
 const FADE_MS = 350;
 const STORAGE_KEY = "castle-cat-splash-seen";
-const LOTTIE_SRC = "/lottie/cat-playing.json";
 
 export function SplashLoader() {
   const [visible, setVisible] = useState(true);
@@ -18,8 +18,11 @@ export function SplashLoader() {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduced || sessionStorage.getItem(STORAGE_KEY)) {
       setVisible(false);
+      document.documentElement.classList.remove("splash-pending");
       return;
     }
+
+    document.documentElement.classList.add("splash-pending");
 
     const fadeTimer = window.setTimeout(() => {
       sessionStorage.setItem(STORAGE_KEY, "1");
@@ -28,6 +31,7 @@ export function SplashLoader() {
 
     const hideTimer = window.setTimeout(() => {
       setVisible(false);
+      document.documentElement.classList.remove("splash-pending");
     }, DURATION_MS + FADE_MS);
 
     const prevOverflow = document.body.style.overflow;
@@ -43,6 +47,7 @@ export function SplashLoader() {
   useEffect(() => {
     if (!visible) {
       document.body.style.overflow = "";
+      document.documentElement.classList.remove("splash-pending");
     }
   }, [visible]);
 
@@ -60,7 +65,7 @@ export function SplashLoader() {
       style={{ transitionDuration: `${FADE_MS}ms` }}
     >
       <div className="aspect-[1070/456] w-full max-w-md">
-        <Lottie src={LOTTIE_SRC} loop autoplay className="size-full" />
+        <Lottie src={catPlaying} loop autoplay className="size-full" />
       </div>
 
       <div className="flex w-full max-w-xs flex-col gap-3">
@@ -80,9 +85,9 @@ export function SplashLoader() {
         <img
           src="/logo-wordmark.svg"
           alt="Castle Cat"
-          width={436}
-          height={113}
-          className="mx-auto h-8 w-auto"
+          width={1024}
+          height={174}
+          className="mx-auto h-7 w-auto sm:h-8"
         />
       </div>
     </div>
