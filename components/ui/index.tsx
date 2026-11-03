@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { Icon } from "@/components/Icon";
+import { Reveal } from "@/components/Reveal";
 
 /** Photo du site — remplace les anciens placeholders du wireframe. */
 export function Photo({
@@ -83,7 +84,7 @@ export function MediaCard({
       />
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-t from-ink/75 from-0% via-ink/20 via-30% to-transparent"
+        className="absolute inset-0 bg-gradient-to-t from-ink/88 from-0% via-ink/40 via-42% to-transparent"
       />
       <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-6">
         <div className="flex min-w-0 flex-1 flex-col gap-2 text-on-ink">
@@ -150,37 +151,72 @@ export function CtaBand({ title, text, href, cta, secondary }: {
 /**
  * Ouverture des pages de service.
  * Hiérarchie : Satoshi sentence-case + photo en bandeau — le display Gasoek reste réservé à l’accueil.
+ * `imageAside` : photo à droite du texte dès `lg` (page Extras).
  */
-export function PageHero({ eyebrow, title, text, actions, image, note }: {
+export function PageHero({ eyebrow, title, text, actions, image, note, imageAside = false }: {
   eyebrow: string;
   title: string;
   text: string;
   actions: ReactNode;
   image?: { src: string; alt: string };
   note?: string;
+  imageAside?: boolean;
 }) {
   return (
     <section className="pb-12 md:pb-16">
-      <div className="container-page flex flex-col gap-8 pt-12 md:gap-10 md:pt-16 lg:pt-20">
-        <div className="flex max-w-3xl flex-col items-start gap-5">
-          <Eyebrow>{eyebrow}</Eyebrow>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl">{title}</h1>
-          <p className="max-w-xl text-lg leading-snug text-ink-soft">{text}</p>
-          <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap [&_.btn]:w-full sm:[&_.btn]:w-auto">
-            {actions}
-          </div>
+      <div
+        className={`container-page flex flex-col gap-8 pt-12 md:gap-10 md:pt-16 lg:pt-20 ${
+          imageAside ? "lg:flex-row lg:items-center lg:gap-12" : ""
+        }`}
+      >
+        <div
+          className={`flex flex-col items-start gap-5 ${
+            imageAside ? "min-w-0 flex-1 lg:max-w-xl" : "max-w-3xl"
+          }`}
+        >
+          <Reveal instant>
+            <Eyebrow>{eyebrow}</Eyebrow>
+          </Reveal>
+          <Reveal instant delay={90} as="h1" className="text-4xl md:text-5xl lg:text-6xl">
+            {title}
+          </Reveal>
+          <Reveal instant delay={180} as="p" className="max-w-xl text-lg leading-snug text-ink-soft">
+            {text}
+          </Reveal>
+          <Reveal instant delay={260} className="w-full">
+            <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap [&_.btn]:w-full sm:[&_.btn]:w-auto">
+              {actions}
+            </div>
+          </Reveal>
           {note && (
-            <p className="font-mono text-xs tracking-tight text-ink-soft uppercase">{note}</p>
+            <Reveal instant delay={340} as="p" className="font-mono text-xs tracking-tight text-ink-soft uppercase">
+              {note}
+            </Reveal>
           )}
         </div>
         {image && (
-          <Photo
-            src={image.src}
-            alt={image.alt}
-            className="h-[240px] w-full md:h-[380px]"
-            sizes="(min-width: 1200px) 1200px, 100vw"
-            priority
-          />
+          <Reveal
+            instant
+            delay={160}
+            variant="media"
+            className={imageAside ? "min-w-0 w-full flex-1" : "w-full"}
+          >
+            <Photo
+              src={image.src}
+              alt={image.alt}
+              className={
+                imageAside
+                  ? "h-[240px] w-full md:h-[340px] lg:h-[420px]"
+                  : "h-[240px] w-full md:h-[380px]"
+              }
+              sizes={
+                imageAside
+                  ? "(min-width: 1024px) 50vw, 100vw"
+                  : "(min-width: 1200px) 1200px, 100vw"
+              }
+              priority
+            />
+          </Reveal>
         )}
       </div>
     </section>

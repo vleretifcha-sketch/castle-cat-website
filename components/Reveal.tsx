@@ -28,6 +28,47 @@ function prefersReducedMotion() {
   return typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
+/** Attend la fin du splash, puis double rAF pour que opacity:0 soit peint avant l’animation. */
+function afterSplashPaint(run: () => void) {
+  let cancelled = false;
+  let raf1 = 0;
+  let raf2 = 0;
+
+  const paintThenRun = () => {
+    if (cancelled) return;
+    raf1 = requestAnimationFrame(() => {
+      raf2 = requestAnimationFrame(() => {
+        if (!cancelled) run();
+      });
+    });
+  };
+
+  const root = document.documentElement;
+  if (!root.classList.contains("splash-pending")) {
+    paintThenRun();
+    return () => {
+      cancelled = true;
+      cancelAnimationFrame(raf1);
+      cancelAnimationFrame(raf2);
+    };
+  }
+
+  const observer = new MutationObserver(() => {
+    if (!root.classList.contains("splash-pending")) {
+      observer.disconnect();
+      paintThenRun();
+    }
+  });
+  observer.observe(root, { attributes: true, attributeFilter: ["class"] });
+
+  return () => {
+    cancelled = true;
+    observer.disconnect();
+    cancelAnimationFrame(raf1);
+    cancelAnimationFrame(raf2);
+  };
+}
+
 /** Apparition premium au scroll / au chargement. */
 export function Reveal({
   children,
@@ -49,8 +90,7 @@ export function Reveal({
     }
 
     if (instant) {
-      const id = requestAnimationFrame(() => setShown(true));
-      return () => cancelAnimationFrame(id);
+      return afterSplashPaint(() => setShown(true));
     }
 
     const el = ref.current;

@@ -330,6 +330,8 @@ html.splash-pending body::before {
 
 @utility field {
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
   min-height: 48px;
   padding: 0.75rem 0.875rem;
   border-radius: var(--radius-control);
@@ -338,6 +340,7 @@ html.splash-pending body::before {
   color: var(--color-ink);
   font-size: 1rem;
   color-scheme: light;
+  box-sizing: border-box;
 }
 
 @utility eyebrow {

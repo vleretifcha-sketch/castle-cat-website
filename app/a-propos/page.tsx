@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Icon } from "@/components/Icon";
+import { Reveal } from "@/components/Reveal";
 import { CtaBand, Eyebrow, Photo } from "@/components/ui";
 import { reassurance } from "@/lib/site";
 
@@ -19,19 +20,25 @@ export default function APropos() {
   return (
     <>
       <section className="container-page grid items-center gap-10 pt-16 pb-12 md:pt-20 md:pb-20 lg:pt-24 lg:grid-cols-2">
-        <Photo
-          src="/photos/sylvain-portrait-v2.jpg"
-          alt="Sylvain Pierredon tenant un chat noir dans les bras"
-          className="h-[420px] md:h-[520px]"
-          sizes="(min-width: 1024px) 50vw, 100vw"
-          priority
-        />
+        <Reveal instant variant="media">
+          <Photo
+            src="/photos/sylvain-portrait-v2.jpg"
+            alt="Sylvain Pierredon tenant un chat noir dans les bras"
+            className="h-[420px] md:h-[520px]"
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            priority
+          />
+        </Reveal>
         <div className="flex min-w-0 flex-col items-start gap-6">
-          <Eyebrow>Qui suis-je ?</Eyebrow>
-          <h1 className="font-hero text-5xl font-normal uppercase md:text-7xl lg:text-8xl">Sylvain Pierredon, mordu des boules de poils</h1>
-          <p className="text-lg leading-relaxed text-ink-soft">
+          <Reveal instant>
+            <Eyebrow>Qui suis-je ?</Eyebrow>
+          </Reveal>
+          <Reveal instant delay={90} as="h1" className="font-hero text-5xl font-normal uppercase md:text-7xl lg:text-8xl">
+            Sylvain Pierredon, mordu des boules de poils
+          </Reveal>
+          <Reveal instant delay={180} as="p" className="text-lg leading-relaxed text-ink-soft">
             J’ai grandi entouré d’animaux, dans une petite commune au cœur d’une forêt cévenole de 1 200 hectares. J’ai décidé de faire de ma passion mon métier.
-          </p>
+          </Reveal>
         </div>
       </section>
 

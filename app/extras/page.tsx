@@ -54,6 +54,7 @@ export default function Extras() {
           </>
         }
         image={{ src: "/photos/hero-extras.jpg", alt: "Chat tigré aux yeux verts, portrait en intérieur" }}
+        imageAside
       />
 
       <section id="domicile" className="scroll-mt-40">

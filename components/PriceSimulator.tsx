@@ -51,7 +51,7 @@ function SimulatorForm({
     state;
 
   return (
-    <div className={`flex flex-col gap-6 ${compact ? "" : "rounded-card bg-surface p-6 md:p-8"}`}>
+    <div className={`flex min-w-0 flex-col gap-6 ${compact ? "" : "rounded-card bg-surface p-6 md:p-8"}`}>
       {!compact && <h3 className="text-3xl">Calculez votre séjour</h3>}
 
       <fieldset className="flex flex-col gap-2.5">
@@ -110,27 +110,27 @@ function SimulatorForm({
 
       <fieldset className="flex flex-col gap-2.5">
         <legend className="mb-2.5 text-sm font-medium text-ink-soft">3. Vos dates</legend>
-        <div className="flex flex-wrap gap-4">
-          <div className="flex flex-[1_1_200px] flex-col gap-1.5">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div className="flex min-w-0 flex-col gap-1.5">
             <label htmlFor={`${idPrefix}-arrivee`} className="text-sm">
               Arrivée
             </label>
             <input
               id={`${idPrefix}-arrivee`}
               type="date"
-              className="field"
+              className="field max-w-full"
               value={arrivee}
               onChange={(e) => setArrivee(e.target.value)}
             />
           </div>
-          <div className="flex flex-[1_1_200px] flex-col gap-1.5">
+          <div className="flex min-w-0 flex-col gap-1.5">
             <label htmlFor={`${idPrefix}-depart`} className="text-sm">
               Départ
             </label>
             <input
               id={`${idPrefix}-depart`}
               type="date"
-              className="field"
+              className="field max-w-full"
               value={depart}
               min={arrivee || undefined}
               onChange={(e) => setDepart(e.target.value)}
@@ -156,12 +156,12 @@ function SimulatorForm({
         )}
 
         {r.ok && (
-          <div className="flex flex-wrap items-end justify-between gap-5 border-t border-line pt-6">
-            <div className="flex flex-col gap-1.5">
+          <div className="flex flex-col gap-5 border-t border-line pt-6 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between">
+            <div className="flex min-w-0 flex-col gap-1.5">
               <p className="text-sm text-muted">
                 {OFFRES[offre].nom} · {catsLabel} · {r.jours} {r.jours > 1 ? "jours" : "jour"} · {r.saison}
               </p>
-              <p className="text-4xl font-medium tracking-tight md:text-5xl">{formatEuro(r.total)}</p>
+              <p className="text-4xl font-medium tracking-tight break-words md:text-5xl">{formatEuro(r.total)}</p>
               <p className="text-sm text-muted">
                 soit {formatEuro(r.moyenneJour)} / jour en moyenne · alimentation incluse
               </p>
@@ -176,7 +176,7 @@ function SimulatorForm({
                 </p>
               )}
             </div>
-            <Link href={reservationHref} className="btn btn-primary w-full sm:w-auto">
+            <Link href={reservationHref} className="btn btn-primary w-full shrink-0 sm:w-auto">
               Réserver ce séjour
             </Link>
           </div>
@@ -190,7 +190,7 @@ function PricingAside({ state }: { state: SimState }) {
   const { offre, chats, catsLabel } = state;
 
   return (
-    <div className="flex min-w-0 flex-col gap-4 rounded-card bg-ink p-6 text-on-ink md:p-8">
+    <div className="flex min-w-0 flex-col gap-4 overflow-hidden rounded-card bg-ink p-6 text-on-ink md:p-8">
       <h3 className="text-2xl text-on-ink">Comment le prix est calculé</h3>
       {offre === "chato" ? (
         <div className="flex flex-col gap-3 text-base leading-relaxed text-on-ink-muted">
@@ -202,20 +202,20 @@ function PricingAside({ state }: { state: SimState }) {
           <p>Exemple : 7 jours pour 1 chat = 70 €.</p>
         </div>
       ) : (
-        <div className="flex flex-col gap-3">
+        <div className="flex min-w-0 flex-col gap-3">
           <p className="text-base text-on-ink-muted">Prix par jour pour {catsLabel}, selon la durée du séjour :</p>
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse text-[15px]">
+          <div className="-mx-1 max-w-full overflow-x-auto overscroll-x-contain px-1" tabIndex={0} role="region" aria-label="Tarifs par durée">
+            <table className="w-full min-w-[280px] border-collapse text-[14px] sm:text-[15px]">
               <thead>
                 <tr className="border-b-[1.5px] border-on-ink">
                   <th scope="col" className="p-2 text-left font-medium">
                     Jour du séjour
                   </th>
-                  <th scope="col" className="p-2 text-right font-medium">
-                    Basse saison
+                  <th scope="col" className="whitespace-nowrap p-2 text-right font-medium">
+                    Basse
                   </th>
-                  <th scope="col" className="p-2 text-right font-medium">
-                    Haute saison
+                  <th scope="col" className="whitespace-nowrap p-2 text-right font-medium">
+                    Haute
                   </th>
                 </tr>
               </thead>
@@ -225,8 +225,8 @@ function PricingAside({ state }: { state: SimState }) {
                     <th scope="row" className="p-2 text-left font-normal">
                       {label}
                     </th>
-                    <td className="p-2 text-right">{TARIFS.basse[chats][i]} €</td>
-                    <td className="p-2 text-right">{TARIFS.haute[chats][i]} €</td>
+                    <td className="whitespace-nowrap p-2 text-right">{TARIFS.basse[chats][i]} €</td>
+                    <td className="whitespace-nowrap p-2 text-right">{TARIFS.haute[chats][i]} €</td>
                   </tr>
                 ))}
               </tbody>
@@ -314,22 +314,22 @@ export function PriceSimulator() {
             role="dialog"
             aria-modal="true"
             aria-labelledby={titleId}
-            className="absolute inset-x-0 bottom-0 top-10 flex max-h-[92dvh] flex-col overflow-hidden rounded-t-card bg-canvas"
+            className="absolute inset-x-0 bottom-0 top-10 flex max-h-[92dvh] w-full max-w-[100vw] flex-col overflow-hidden rounded-t-card bg-canvas"
           >
             <div className="flex shrink-0 items-center justify-between gap-3 border-b border-line/60 px-4 py-3">
-              <h3 id={titleId} className="text-xl">
+              <h3 id={titleId} className="min-w-0 truncate text-xl">
                 Calculez votre séjour
               </h3>
               <button
                 type="button"
-                className="flex size-11 items-center justify-center rounded-control border-[1.5px] border-line-strong"
+                className="flex size-11 shrink-0 items-center justify-center rounded-control border-[1.5px] border-line-strong"
                 aria-label="Fermer"
                 onClick={() => setOpen(false)}
               >
                 <Icon name="close" size={22} />
               </button>
             </div>
-            <div className="flex flex-1 flex-col gap-6 overflow-y-auto p-4 pb-[max(1.5rem,env(safe-area-inset-bottom))]">
+            <div className="flex min-h-0 min-w-0 flex-1 flex-col gap-6 overflow-x-hidden overflow-y-auto p-4 pb-[max(1.5rem,env(safe-area-inset-bottom))]">
               <SimulatorForm state={state} idPrefix="sim-modal" compact />
               <PricingAside state={state} />
             </div>

@@ -131,8 +131,8 @@ export default function Accueil() {
             <Reveal variant="media">
               <MediaCard
                 href="/pension-chat-nantes"
-                src="/photos/box-prive.jpg"
-                alt="Chat dans un box privé sur deux niveaux"
+                src="/photos/card-pension.jpg"
+                alt="Chat roux et blanc perché dans la charpente en bois de la pension"
                 eyebrow="Service principal"
                 title="Pension féline"
                 text="Deux offres : la vie de chat’ô à prix doux, ou les 500 m² avec box privé, liberté ou espace privatisé. Alimentation et soins inclus."
