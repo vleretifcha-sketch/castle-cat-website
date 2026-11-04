@@ -40,7 +40,7 @@ export default function Accueil() {
             <span className="whitespace-nowrap">un roi&nbsp;!</span>
           </Reveal>
           <Reveal instant delay={180} as="p" className="max-w-xl text-lg leading-snug text-ink-soft">
-            500 m², 4 zones et un catio de 160 m² à Casson. Votre chat est chouchouté, vous partez serein.
+            Plus de 500&nbsp;m² dont un catio de 160&nbsp;m², 4 univers à Casson. Votre chat est chouchouté, vous partez serein.
           </Reveal>
           <Reveal instant delay={260} className="w-full">
             <div id="hero-cta" className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap">
@@ -67,7 +67,7 @@ export default function Accueil() {
         <dl className="container-page grid grid-cols-2 gap-6 border-y border-line py-8 md:grid-cols-4 md:gap-8 md:py-10">
           {[
             ["500 m²", "d’espaces pour les chats"],
-            ["4", "zones pour tous les caractères"],
+            ["4", "univers pour tous les caractères"],
             ["160 m²", "de catio en plein air"],
             ["Depuis 2016", "aux côtés de vos animaux"],
           ].map(([chiffre, label], i) => (
@@ -135,7 +135,7 @@ export default function Accueil() {
                 alt="Chat roux et blanc perché dans la charpente en bois de la pension"
                 eyebrow="Service principal"
                 title="Pension féline"
-                text="Deux offres : la vie de chat’ô à prix doux, ou les 500 m² avec box privé, liberté ou espace privatisé. Alimentation et soins inclus."
+                text="Deux offres : la vie de chat’ô à prix doux, ou de grands espaces en liberté ou espaces privatisés. Alimentation et soins inclus."
                 meta="Dès 10 € par jour · alimentation incluse"
                 className="min-h-[420px]"
               />

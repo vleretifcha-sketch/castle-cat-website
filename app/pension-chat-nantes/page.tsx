@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/pension-chat-nantes" },
 };
 
-const zones: { nom: string; src: string; alt: string; text?: string }[] = [
+const espaces: { nom: string; src: string; alt: string; text?: string }[] = [
   {
     nom: "La Forêt des Capucins",
     src: "/photos/foret-capucins.jpg",
@@ -23,9 +23,9 @@ const zones: { nom: string; src: string; alt: string; text?: string }[] = [
     alt: "La vie de chat’ô : allée boisée avec bancs, plantes et guirlandes",
   },
   {
-    nom: "Le bassin du Colibri",
+    nom: "Les bassins du Colibri",
     src: "/photos/bassin-colibri.jpg",
-    alt: "Le bassin du Colibri : bassin, arbres en fleurs et pergola",
+    alt: "Les bassins du Colibri : bassins, arbres en fleurs et pergola",
   },
   {
     nom: "Le Catio",
@@ -37,22 +37,22 @@ const zones: { nom: string; src: string; alt: string; text?: string }[] = [
 
 const inclus = [
   "Alimentation en libre-service élaborée par un vétérinaire nutritionniste",
-  "Litières faites chaque jour, en copeaux de bois naturel dépoussiéré",
-  "Traitements vétérinaires administrés (injections pour diabète…)",
-  "Régime alimentaire spécifique sur demande",
+  "Litières faites chaque jour, en granulés de bois naturel",
+  "Traitements vétérinaires administrés (médicaments, injections d’insuline…)",
+  "Alimentation de votre foyer sur demande",
   "Photos et vidéos de votre chat pendant le séjour",
 ];
 
 // Une seule source pour l'affichage ET les données structurées FAQPage
 const faq: { q: string; a: string }[] = [
-  { q: "Combien coûte la pension pour un chat ?", a: "10 € par jour avec la vie de chat’ô. Dans les autres espaces, de 10 € le premier jour à 13 € par jour pour les longs séjours en basse saison. Le simulateur calcule votre prix exact." },
-  { q: "Quelle différence entre les deux offres ?", a: "La vie de chat’ô est un espace partagé de 40 m² à prix fixe, ouvert hors été. Les espaces de la pension donnent accès aux 500 m² et aux 4 zones — Forêt des Capucins, vie de chat’ô, bassin du Colibri et Catio — avec box privé, liberté ou espace privatisé au choix. Soins et alimentation sont identiques." },
-  { q: "Mon chat va-t-il bien cohabiter avec les autres ?", a: "Sur un espace neutre et vaste, les chats partagent leur territoire sans animosité. S’il préfère être seul, le box privé est au même tarif." },
-  { q: "Que mange-t-il pendant le séjour ?", a: "Une alimentation élaborée par un vétérinaire nutritionniste, incluse dans le prix. Un régime spécifique peut être appliqué sur demande." },
-  { q: "Mon chat suit un traitement, c’est possible ?", a: "Oui. J’administre les traitements vétérinaires, injections comprises, sans supplément." },
+  { q: "Combien coûte la pension pour un chat ?", a: "10 € par jour avec la vie de chat’ô. Dans les espaces XXL, de 10 € le premier jour à 13 € par jour pour les longs séjours en basse saison. Le simulateur calcule votre prix exact." },
+  { q: "Quelle différence entre les deux offres ?", a: "La vie de chat’ô est un espace partagé de 40 m² à prix fixe, ouvert hors été. Les espaces XXL, ce sont 3 espaces de 60 à 100 m² et un catio de 160 m² — Forêt des Capucins, vie de chat’ô, bassins du Colibri et Catio — en liberté ou en espace privatisé sur demande. Soins et alimentation sont identiques." },
+  { q: "Mon chat va-t-il bien cohabiter avec les autres ?", a: "Sur un espace neutre et vaste, les chats partagent leur territoire sans animosité. S’il préfère être seul, l’espace privatisé est possible sur demande, au même tarif." },
+  { q: "Que mange-t-il pendant le séjour ?", a: "Une alimentation élaborée par un vétérinaire nutritionniste, incluse dans le prix. L’alimentation de votre foyer peut être appliquée sur demande." },
+  { q: "Mon chat suit un traitement, c’est possible ?", a: "Oui. J’administre les traitements vétérinaires (médicaments, injections d’insuline…), sans supplément." },
   { q: "Vais-je avoir des nouvelles ?", a: "Oui, photos et vidéos de votre chat pendant le séjour, gratuitement." },
   { q: "Accueillez-vous d’autres animaux ?", a: "Oui, les NAC : lapins, furets, rongeurs. [Conditions et tarifs à préciser]" },
-  { q: "Je ne peux pas l’amener, comment faire ?", a: "Le taxi animalier vient le chercher chez vous et le ramène à la fin du séjour." },
+  { q: "Je ne peux pas l’amener, comment faire ?", a: "Le taxi animalier vient le chercher chez vous et le ramène à la fin du séjour, sur devis." },
 ];
 
 export default function Pension() {
@@ -73,19 +73,19 @@ export default function Pension() {
 
       <section className="container-page flex flex-col gap-8 pb-20">
         <div className="flex flex-wrap gap-12">
-          <h2 className="flex-[1_1_320px] text-4xl md:text-5xl">4 zones sur plus de 500&nbsp;m²</h2>
+          <h2 className="flex-[1_1_320px] text-4xl md:text-5xl">3 espaces XXL et un catio</h2>
           <p className="flex-[2_1_440px] text-lg leading-snug text-ink-soft">
-            Forêt, allées douillettes, bassin et catio en plein air. Chaque caractère y trouve son coin.
+            Forêt, alcôves, bassins poissonneux et catio en plein air. À chaque caractère son havre de paix.
           </p>
         </div>
         <ul className="grid gap-4 sm:grid-cols-2">
-          {zones.map((zone) => (
-            <li key={zone.nom}>
+          {espaces.map((espace) => (
+            <li key={espace.nom}>
               <MediaCard
-                src={zone.src}
-                alt={zone.alt}
-                title={zone.nom}
-                text={zone.text}
+                src={espace.src}
+                alt={espace.alt}
+                title={espace.nom}
+                text={espace.text}
                 className="min-h-[280px] md:min-h-[340px]"
               />
             </li>
@@ -111,7 +111,7 @@ export default function Pension() {
             <div className="flex flex-col gap-1.5">
               <div className="flex justify-between gap-3">
                 <p className="font-medium">Taxi animalier</p>
-                <p className="shrink-0 font-medium">[x]&nbsp;€/km</p>
+                <p className="shrink-0 font-medium">Sur devis</p>
               </div>
               <p className="text-[15px] leading-normal text-ink-soft">
                 Vous ne pouvez pas vous déplacer ? Transport accrédité jusqu’à la pension, depuis Casson.
@@ -149,7 +149,7 @@ export default function Pension() {
                 </div>
                 <h3 className="text-3xl">La vie de chat’ô</h3>
                 <p className="leading-relaxed text-ink-soft">
-                  Un espace partagé de 40 m², pour les chats sociables. Soins et alimentation inclus.
+                  Un espace partagé de 40&nbsp;m². Soins et alimentation inclus.
                 </p>
                 <div className="mt-auto flex flex-col gap-1 border-t border-line pt-5">
                   <p className="text-3xl font-medium tracking-tight">10&nbsp;€</p>
@@ -165,19 +165,18 @@ export default function Pension() {
                   <span className="tag-inverse">Toute l’année</span>
                   <span className="tag-inverse">Dégressif</span>
                 </div>
-                <h3 className="text-3xl text-on-ink">Les espaces de la pension</h3>
+                <h3 className="text-3xl text-on-ink">Les espaces XXL</h3>
                 <p className="leading-relaxed text-on-ink-muted">
-                  500&nbsp;m², 4 zones et un catio de 160&nbsp;m².
+                  3 espaces de 60 à 100&nbsp;m² et un catio de 160&nbsp;m².
                 </p>
                 <details className="rounded-control border border-on-ink/20 open:bg-on-ink/5">
                   <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 px-3 py-2.5 text-sm font-medium text-on-ink [&::-webkit-details-marker]:hidden">
-                    Trois formules au même prix
+                    Deux formules au même prix
                     <Icon name="chevron_right" size={18} className="shrink-0 rotate-90 opacity-70" />
                   </summary>
                   <ul className="flex flex-col gap-2 border-t border-on-ink/15 px-3 py-3 text-[15px] leading-snug text-on-ink-muted">
-                    <li>Box privé sur 2 niveaux, pour les chats réservés</li>
                     <li>En liberté avec les copains</li>
-                    <li>Espace privatisé si vous avez plusieurs chats</li>
+                    <li>Espace privatisé sur demande</li>
                   </ul>
                 </details>
                 <div className="mt-auto flex flex-col gap-1 border-t border-on-ink/20 pt-5">
@@ -192,7 +191,7 @@ export default function Pension() {
                     </a>
                   </p>
                   <p id="prix-espaces-note" className="text-sm text-on-ink-muted">
-                    * Par jour et par chat, au plus bas à partir de 28&nbsp;jours · tarif dégressif · basse saison
+                    * Basse saison · À partir du 29e jour · Par jour et par chat
                   </p>
                 </div>
               </div>

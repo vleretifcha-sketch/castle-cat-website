@@ -51,6 +51,6 @@ export const reassurance = [
   { title: "Expérimenté depuis 2016", text: "Chats, chiens et NAC, chez vous puis à la pension.", icon: "history" },
   { title: "Assuré en RC pro", text: "Votre animal est couvert pendant toute la garde.", icon: "verified_user" },
   { title: "Vigilance santé", text: "Un œil attentif chaque jour, et le vétérinaire si besoin.", icon: "monitor_heart" },
-  { title: "Médicaments administrés", text: "Traitements et injections (diabète…) sans supplément.", icon: "vaccines" },
+  { title: "Médicaments administrés", text: "Traitements et injections d’insuline sans supplément.", icon: "vaccines" },
   { title: "Adapté à chaque profil", text: "Quels que soient l’âge, la race ou les habitudes.", icon: "pets" },
 ] as const;

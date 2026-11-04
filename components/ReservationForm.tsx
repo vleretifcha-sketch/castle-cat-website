@@ -174,9 +174,8 @@ export function ReservationForm() {
             <div className="flex flex-col gap-2">
               <label htmlFor="formule" className="text-sm font-medium">Formule souhaitée</label>
               <select id="formule" name="formule" className="field">
-                <option>Box privé sur 2 niveaux</option>
                 <option>En liberté avec les copains</option>
-                <option>Espace privatisé</option>
+                <option>Espace privatisé sur demande</option>
                 <option>Je ne sais pas encore</option>
               </select>
             </div>

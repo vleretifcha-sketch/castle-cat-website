@@ -12,8 +12,8 @@ export const OFFRES: Record<Offre, { nom: string; resume: string }> = {
     resume: "Espace partagé de 40 m² · 10 € / jour / chat · du 1er septembre au 30 juin",
   },
   espaces: {
-    nom: "Les espaces de la pension",
-    resume: "500 m², 4 zones et catio · tarif dégressif · toute l’année",
+    nom: "Les espaces XXL",
+    resume: "3 espaces de 60 à 100 m² et un catio de 160 m² · tarif dégressif · toute l’année",
   },
 };
 

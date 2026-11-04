@@ -113,13 +113,19 @@ export function Testimonials() {
     <section className="flex flex-col gap-10 py-4 pb-20">
       <div className="container-page flex flex-wrap items-end justify-between gap-4">
         <h2 className="text-4xl md:text-5xl">Ils nous ont confié leur chat</h2>
-        <p className="flex items-center gap-2 text-sm text-ink-soft">
+        <a
+          href={googleRating.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="no-underline flex items-center gap-2 text-sm text-ink-soft transition-colors hover:text-ink"
+        >
           <Icon name="star" size={18} filled className="text-sable" />
           <span>
             <strong className="font-medium text-ink">{googleRating.score}/5</strong> · {googleRating.count}{" "}
             {googleRating.label}
           </span>
-        </p>
+          <span className="sr-only"> (ouvre la fiche Google dans un nouvel onglet)</span>
+        </a>
       </div>
 
       <div className="container-page">

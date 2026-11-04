@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     template: "%s | Castle Cat",
   },
   description:
-    "Pension pour chats à Casson, aux portes de Nantes : 500 m², 4 zones, un catio. Garde à domicile et croquettes. Dès 10 €/jour.",
+    "Pension pour chats à Casson, aux portes de Nantes : espaces XXL, catio de 160 m². Garde à domicile et croquettes. Dès 10 €/jour.",
   openGraph: { siteName: site.name, locale: "fr_FR", type: "website" },
 };
 
