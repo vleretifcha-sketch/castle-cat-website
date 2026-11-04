@@ -49,6 +49,9 @@ export function Footer() {
               </li>
             ))}
           </ul>
+          <p className="text-sm leading-snug text-on-ink-muted normal-case tracking-normal">
+            {site.hoursNote}
+          </p>
         </div>
 
         <div className="flex flex-col gap-2 text-base leading-relaxed">

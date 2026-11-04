@@ -9,10 +9,10 @@ import { googleRating, reviews } from "@/lib/reviews";
 
 const videos = [
   {
-    id: "video-1",
+    id: "video-3",
     label: "Témoignage vidéo 1",
-    poster: "/photos/temoignages/temoignage-1.jpg",
-    src: "/videos/temoignage-1.mp4",
+    poster: "/photos/temoignages/temoignage-3.jpg",
+    src: "/videos/temoignage-3.mp4",
   },
   {
     id: "video-2",
@@ -21,10 +21,10 @@ const videos = [
     src: "/videos/temoignage-2.mp4",
   },
   {
-    id: "video-3",
+    id: "video-1",
     label: "Témoignage vidéo 3",
-    poster: "/photos/temoignages/temoignage-3.jpg",
-    src: "/videos/temoignage-3.mp4",
+    poster: "/photos/temoignages/temoignage-1.jpg",
+    src: "/videos/temoignage-1.mp4",
   },
 ] as const;
 

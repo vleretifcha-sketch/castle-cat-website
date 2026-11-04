@@ -3,7 +3,7 @@ import Link from "next/link";
 import { PageHero, Photo } from "@/components/ui";
 
 export const metadata: Metadata = {
-  title: "Extras : garde à domicile, balades et croquettes",
+  title: "Extras : visite à domicile, balades et croquettes",
   description:
     "Visites à domicile, balades canines et livraison de croquettes autour de Casson. Petites prestations en complément de la pension.",
   alternates: { canonical: "/extras" },
@@ -41,8 +41,8 @@ export default function Extras() {
     <>
       <PageHero
         eyebrow="Autres prestations · autour de Casson"
-        title="Garde à domicile, balades et croquettes"
-        text="En complément de la pension : je passe chez vous, je sors votre chien, ou je vous livre des croquettes."
+        title="Visite à domicile, balades et croquettes"
+        text="En complément de la pension : je passe chez vous m’occuper de vos animaux, ou je vous livre des croquettes."
         actions={
           <>
             <Link href="/reservation?service=domicile" className="btn btn-primary">
@@ -92,7 +92,7 @@ export default function Extras() {
                 <li>Chien au comportement difficile</li>
               </ul>
               <p className="text-base leading-relaxed text-on-ink">
-                Titulaire du [CCAD / ACACED, à confirmer], au service des animaux depuis 2016.
+                Titulaire de l’ACACED, au service des animaux depuis 2016.
               </p>
             </article>
           </div>
@@ -137,7 +137,7 @@ export default function Extras() {
         <div className="flex flex-[1_1_420px] flex-col gap-4">
           <Photo
             src="/photos/communes-desservies.jpg"
-            alt="Chat tricolore allongé sur une poutre en bois"
+            alt="Chat au pelage crème et aux yeux bleus, assis sur un rebord face au jardin"
             className="h-[320px]"
             sizes="(min-width: 768px) 40vw, 100vw"
           />

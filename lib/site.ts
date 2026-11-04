@@ -10,6 +10,7 @@ export const site = {
   /** Lien WhatsApp (numéro international sans + ni espaces). */
   whatsappHref: "https://wa.me/33770413758",
   email: "sylvain.pierredon@gmail.com",
+  siret: "85020370400026",
   address: {
     street: "38 rue Paul Salmon",
     postalCode: "44390",
@@ -48,7 +49,7 @@ export const nav = [
 
 export const reassurance = [
   { title: "Formé ACACED et TAV", text: "Certifications officielles pour la garde et le transport d’animaux.", icon: "workspace_premium" },
-  { title: "Expérimenté depuis 2016", text: "Chats, chiens et NAC, chez vous puis à la pension.", icon: "history" },
+  { title: "Expérimenté depuis 2016", text: "Chats, chiens et NAC.", icon: "history" },
   { title: "Assuré en RC pro", text: "Votre animal est couvert pendant toute la garde.", icon: "verified_user" },
   { title: "Vigilance santé", text: "Un œil attentif chaque jour, et le vétérinaire si besoin.", icon: "monitor_heart" },
   { title: "Médicaments administrés", text: "Traitements et injections d’insuline sans supplément.", icon: "vaccines" },

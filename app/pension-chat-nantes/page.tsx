@@ -73,7 +73,7 @@ export default function Pension() {
 
       <section className="container-page flex flex-col gap-8 pb-20">
         <div className="flex flex-wrap gap-12">
-          <h2 className="flex-[1_1_320px] text-4xl md:text-5xl">3 espaces XXL et un catio</h2>
+          <h2 className="flex-[1_1_320px] text-4xl md:text-5xl">4 univers sur plus de 500&nbsp;m²</h2>
           <p className="flex-[2_1_440px] text-lg leading-snug text-ink-soft">
             Forêt, alcôves, bassins poissonneux et catio en plein air. À chaque caractère son havre de paix.
           </p>
